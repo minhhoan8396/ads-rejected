@@ -4,22 +4,20 @@ const nextConfig: NextConfig = {
     reactCompiler: false,
     poweredByHeader: false,
     images: {
-        // ✅ Disable Image Optimization to preserve original quality
         unoptimized: true,
     },
     compress: true,
     experimental: {
-        // Optimize CSS
         optimizePackageImports: ['@fortawesome/react-fontawesome'],
     },
+    // Turbo pack yêu cầu root, nhưng hãy cẩn thận với đường dẫn nếu build lỗi
     turbopack: {
         root: __dirname,
     },
+    // Thêm cấu hình bỏ qua lỗi ESLint vào đây
+    eslint: {
+        ignoreDuringBuilds: true,
+    },
 };
-const nextConfig = {
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
-}
-module.exports = nextConfig
+
 export default nextConfig;
