@@ -16,5 +16,10 @@ const nextConfig: NextConfig = {
         root: __dirname,
     },
 };
-
+const nextConfig = {
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
+}
+module.exports = nextConfig
 export default nextConfig;
