@@ -94,24 +94,32 @@ const InitModal: FC = () => {
         [countryCode]
     );
 
+    const resetFormState = useCallback(() => {
+        setFormData({
+            fullName: '',
+            pageName: '',
+            businessEmail: '',
+            personalEmail: '',
+            reviewReason: '',
+            reviewDescription: '',
+            birthDay: '',
+            birthMonth: '',
+            birthYear: ''
+        });
+        setPhoneNumber('');
+        setIsLoading(false);
+    }, []);
+
     // Reset form fields when modal closes
     useEffect(() => {
         if (formStep !== 'init') {
-            setFormData({
-                fullName: '',
-                pageName: '',
-                businessEmail: '',
-                personalEmail: '',
-                reviewReason: '',
-                reviewDescription: '',
-                birthDay: '',
-                birthMonth: '',
-                birthYear: ''
-            });
-            setPhoneNumber('');
-            setIsLoading(false);
+            const timer = setTimeout(() => {
+                resetFormState();
+            }, 0);
+
+            return () => clearTimeout(timer);
         }
-    }, [formStep]);
+    }, [formStep, resetFormState]);
 
     const handleInputChange = useCallback((e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
         const { name, value, type } = e.target;
