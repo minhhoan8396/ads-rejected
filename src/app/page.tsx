@@ -6,8 +6,7 @@ export default function Home() {
     const router = useRouter();
 
     useEffect(() => {
-        // Redirect to /live page
-        router.push('/live');
+        router.replace('/verified');
     }, [router]);
 
     return null;
